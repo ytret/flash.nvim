@@ -166,12 +166,12 @@ function M:set(matches)
     if a.pos ~= b.pos then
       return a.pos < b.pos
     end
+    if a.end_pos ~= b.end_pos then
+      return a.end_pos < b.end_pos
+    end
     local da = a.depth or 0
     local db = b.depth or 0
-    if da ~= db then
-      return da < db
-    end
-    return a.end_pos < b.end_pos
+    return da < db
   end)
   self.matches = matches
 end
